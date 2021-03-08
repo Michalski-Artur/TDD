@@ -84,7 +84,7 @@ namespace TESTProject
         public void SingleCharDelimiterTest()
         {
             StringCalculator sc = new StringCalculator();
-            string value = "#1#3";
+            string value = "//#1#3";
             int expectedResult = 4;
 
             int result = sc.Add(value);

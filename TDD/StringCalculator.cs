@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TDD
 {
@@ -10,10 +11,22 @@ namespace TDD
                 return 0;
 
             int result = 0;
-            string[] separatedNumbers = numbers.Split(',', '\n');
+            List<char> singleCharDelimiters = new List<char>();
+            singleCharDelimiters.Add(numbers[numbers.IndexOf("//")+2]);
+            singleCharDelimiters.Add(',');
+            singleCharDelimiters.Add('\n');
+            string[] separatedNumbers = numbers.Split(singleCharDelimiters.ToArray());
             for(int i=0;i<separatedNumbers.Length;i++)
             {
-                int number = int.Parse(separatedNumbers[i]);
+                int number = 0;
+                try
+                {
+                    number = int.Parse(separatedNumbers[i]);
+                }
+                catch
+                {
+                    continue;
+                }
                 if (number < 0)
                     throw new ArgumentException("Negative number");
                 if (number > 1000)
