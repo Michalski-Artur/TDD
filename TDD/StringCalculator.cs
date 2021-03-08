@@ -12,7 +12,8 @@ namespace TDD
 
             int result = 0;
             List<char> singleCharDelimiters = new List<char>();
-            singleCharDelimiters.Add(numbers[numbers.IndexOf("//")+2]);
+            if(numbers.StartsWith("//"))
+                singleCharDelimiters.Add(numbers[2]);
             singleCharDelimiters.Add(',');
             singleCharDelimiters.Add('\n');
             string[] separatedNumbers = numbers.Split(singleCharDelimiters.ToArray());
